@@ -13,7 +13,7 @@ namespace samson\social;
  * @version
  */
 
-class Facebook extends Core
+class Facebook extends Network
 {
     public $id = 'facebook';
 
