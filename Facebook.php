@@ -4,7 +4,7 @@
  * on 11.02.14 at 11:35
  */
 
-namespace samson\social;
+namespace samson\social\facebook;
 
 /**
  *
@@ -13,7 +13,7 @@ namespace samson\social;
  * @version
  */
 
-class Facebook extends Network
+class Facebook extends \samson\social\network\Network
 {
     public $id = 'facebook';
 
