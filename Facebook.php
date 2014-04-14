@@ -24,6 +24,8 @@ class Facebook extends \samson\social\network\Network
     public $tokenURL = 'https://graph.facebook.com/oauth/access_token';
 
     public $userURL = 'https://graph.facebook.com/me';
+	
+	public $requirements = array('socialnetwork');
 
     public function __HANDLER()
     {
