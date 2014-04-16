@@ -19,13 +19,13 @@ class Facebook extends \samson\social\Network
 
     public $dbIdField = 'fb_id';
 
+    public $baseURL = 'https://graph.facebook.com/';
+
     public $socialURL = 'https://www.facebook.com/dialog/oauth';
 
     public $tokenURL = 'https://graph.facebook.com/oauth/access_token';
 
     public $userURL = 'https://graph.facebook.com/me';
-	
-	public $requirements = array('socialnetwork');
 
     public function __HANDLER()
     {
@@ -36,7 +36,7 @@ class Facebook extends \samson\social\Network
             'client_id'     => $this->appCode,
             'redirect_uri'  => $this->returnURL(),
             'response_type' => 'code',
-            'scope'         => 'email,user_birthday' // vk - no scope; fb has scope
+            'scope'         => 'email,user_birthday'
         ));
     }
 
@@ -63,7 +63,6 @@ class Facebook extends \samson\social\Network
                 ));
 
                 $this->setUser($userInfo);
-                //  trace($this->user);
             }
 
         }
@@ -81,6 +80,7 @@ class Facebook extends \samson\social\Network
         $this->user->name = $user['first_name'];
         $this->user->surname = $user['last_name'];
         $this->user->socialID = $user['id'];
+        $this->user->photo = $this->baseURL.$user['id'].'/picture';
 
         parent::setUser($user);
     }
