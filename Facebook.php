@@ -70,19 +70,19 @@ class Facebook extends \samson\social\Network
         parent::__token();
     }
 
-    public function setUser(array $user)
+    protected function setUser(array $userData, & $user = null)
     {
-        $this->user = new User();
-        $this->user->birthday = $user['birthday'];
-        $this->user->email = $user['email'];
-        $this->user->gender = $user['gender'];
-        $this->user->locale = $user['locale'];
-        $this->user->name = $user['first_name'];
-        $this->user->surname = $user['last_name'];
-        $this->user->socialID = $user['id'];
-        $this->user->photo = $this->baseURL.$user['id'].'/picture';
+        $user = new User();
+        $user->birthday = $user['birthday'];
+        $user->email = $user['email'];
+        $user->gender = $user['gender'];
+        $user->locale = $user['locale'];
+        $user->name = $user['first_name'];
+        $user->surname = $user['last_name'];
+        $user->socialID = $user['id'];
+        $user->photo = $this->baseURL.$user['id'].'/picture';
 
-        parent::setUser($user);
+        parent::setUser($userData, $user);
     }
 
 }
