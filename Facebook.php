@@ -73,14 +73,14 @@ class Facebook extends \samson\social\Network
     protected function setUser(array $userData, & $user = null)
     {
         $user = new User();
-        $user->birthday = $user['birthday'];
-        $user->email = $user['email'];
-        $user->gender = $user['gender'];
-        $user->locale = $user['locale'];
-        $user->name = $user['first_name'];
-        $user->surname = $user['last_name'];
-        $user->socialID = $user['id'];
-        $user->photo = $this->baseURL.$user['id'].'/picture';
+        $user->birthday = $userData['birthday'];
+        $user->email = $userData['email'];
+        $user->gender = $userData['gender'];
+        $user->locale = $userData['locale'];
+        $user->name = $userData['first_name'];
+        $user->surname = $userData['last_name'];
+        $user->socialID = $userData['id'];
+        $user->photo = $this->baseURL.$userData['id'].'/picture';
 
         parent::setUser($userData, $user);
     }
