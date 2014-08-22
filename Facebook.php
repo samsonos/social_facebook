@@ -4,7 +4,7 @@
  * on 11.02.14 at 11:35
  */
 
-namespace samson\social;
+namespace samson\social\facebook;
 
 /**
  *
@@ -13,7 +13,7 @@ namespace samson\social;
  * @version
  */
 
-class Facebook extends \samson\social\Network
+class Facebook extends \samson\social\network\Network
 {
     public $id = 'facebook';
 
@@ -72,7 +72,7 @@ class Facebook extends \samson\social\Network
 
     protected function setUser(array $userData, & $user = null)
     {
-        $user = new User();
+        $user = new \samson\social\User();
         $user->birthday = $userData['birthday'];
         $user->email = $userData['email'];
         $user->gender = $userData['gender'];
