@@ -42,16 +42,15 @@ class Facebook extends \samson\social\network\Network
 
     public function __token()
     {
-        $code = & $_GET['code'];
+        $code = $_GET['code'];
         if (isset($code)) {
 
             // Send http get request to retrieve VK code
             $token = $this->post($this->tokenURL, array(
                 'client_id' => $this->appCode,
+                'redirect_uri' => $this->returnURL(),
                 'client_secret' => $this->appSecret,
                 'code' => $code,
-                'redirect_uri' => $this->returnURL(),
-
             ));
 
             parse_str($token, $token);
@@ -61,7 +60,6 @@ class Facebook extends \samson\social\network\Network
                 $userInfo = $this->get($this->userURL, array(
                     'access_token' => $token['access_token']
                 ));
-
                 $this->setUser($userInfo);
             }
 
